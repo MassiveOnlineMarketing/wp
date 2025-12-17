@@ -191,6 +191,36 @@ Because `seo:rename-product-media` creates a copy, rollback is simply:
 - Stop using `product-media-seo/` and switch back to `product-media/`.
 - Or delete `product-media-seo/` and regenerate later.
 
+## SEO rename from scraped URLs (v2)
+
+If you want filenames tied to the original scraped image URL, use:
+
+```zsh
+pnpm run seo:rename-from-scrape
+```
+
+Defaults:
+- Reads products from `product-data.with-media.json` (must contain `slug` + `images[]` URLs).
+- Reads source files from `product-media/`.
+- Writes a renamed copy to `product-media-seo-v2/`.
+
+Filename scheme:
+- `{land}-{product_slug}-{original_filename}{ext}`
+
+Outputs:
+- `reports/seo-rename-scrape-map.json`
+- `reports/seo-rename-scrape-map.csv`
+
+The mapping is keyed on `originalImageUrl` (scraped URL) and points to `newUrlPath` (path under the new SEO folder).
+
+Options:
+
+```zsh
+pnpm run seo:rename-from-scrape -- --inRoot product-media --outRoot product-media-seo-v2 --reportDir reports --limitProducts 5 --dedupe copy
+```
+
+`--dedupe hardlink` will hardlink identical source files when possible (saves disk, still creates per-product paths).
+
 ## Interpreting the unused-backup report
 
 `pnpm run report:unused-backup` lists backup files that were not found under any product folder in `product-media/`.

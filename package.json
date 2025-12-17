@@ -1,23 +1,24 @@
 {
-	"name": "authentic-golf-wp-tools",
-	"private": true,
-	"type": "module",
-	"packageManager": "pnpm@9.15.0",
-	"scripts": {
-		"build": "tsc -p tsconfig.json",
-		"start": "node dist/index.js",
-		"dev": "node --enable-source-maps --import ./scripts/ts-node-register.mjs src/index.ts",
-		"extract:pages": "pnpm run dev -- --in wp-data/pages.json --out wp-data/pages.id-link.json",
-		"scrape:images": "node --enable-source-maps --import ./scripts/ts-node-register.mjs src/scrape-images.ts --in wp-data/pages.id-link.json --out wp-data/pages.images.json --delayMs 1000",
-		"backup:media": "node --enable-source-maps --import ./scripts/ts-node-register.mjs src/backup-media.ts --baseUrl https://authentic.golf --outDir backup",
-		"merge:product-media": "node --enable-source-maps --import ./scripts/ts-node-register.mjs src/merge-product-media.ts",
-		"copy:product-images": "node --enable-source-maps --import ./scripts/ts-node-register.mjs src/copy-product-images.ts",
-		"report:unused-backup": "node --enable-source-maps --import ./scripts/ts-node-register.mjs src/report-unused-backup-media.ts",
-		"seo:rename-product-media": "node --enable-source-maps --import ./scripts/ts-node-register.mjs src/seo-rename-product-media.ts"
-	},
-	"devDependencies": {
-		"@types/node": "^22.10.2",
-		"ts-node": "^10.9.2",
-		"typescript": "^5.7.2"
-	}
+  "name": "authentic-golf-wp-tools",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "dev": "node --enable-source-maps --import ./scripts/ts-node-register.mjs src/index.ts",
+    "extract:pages": "pnpm run dev -- --in wp-data/pages.json --out wp-data/pages.id-link.json",
+    "scrape:images": "node --enable-source-maps --import ./scripts/ts-node-register.mjs src/scrape-images.ts --in wp-data/pages.id-link.json --out wp-data/pages.images.json --delayMs 1000",
+    "backup:media": "node --enable-source-maps --import ./scripts/ts-node-register.mjs src/backup-media.ts --baseUrl https://authentic.golf --outDir backup",
+    "merge:product-media": "node --enable-source-maps --import ./scripts/ts-node-register.mjs src/merge-product-media.ts",
+    "copy:product-images": "node --enable-source-maps --import ./scripts/ts-node-register.mjs src/copy-product-images.ts",
+    "report:unused-backup": "node --enable-source-maps --import ./scripts/ts-node-register.mjs src/report-unused-backup-media.ts",
+    "seo:rename-product-media": "node --enable-source-maps --import ./scripts/ts-node-register.mjs src/seo-rename-product-media.ts",
+    "seo:rename-from-scrape": "node --enable-source-maps --import ./scripts/ts-node-register.mjs src/seo-rename-from-scrape.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  }
 }
